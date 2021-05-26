@@ -10,8 +10,13 @@
 </head>
 <body>
     <header>
-        <h1>Movies</h1>
+        <h1> Welcome,{{user.firstName}}!</h1>
+        <h1>{{user.firstName}}'s Favorite Movies</h1>
+        <nav>
+            <a href="/logout">Log Out</a>
+        </nav>
     </header>
+    
     <div class="main">
         <table>
             <thead>
@@ -23,19 +28,17 @@
                 </tr>
             </thead>
             <tbody>
-                {% for show in shows%}
+                {% for movie in movies%}
                 <tr>
-                    <td>{{show.id}}</td>
-                    <td>{{show.title}}</td>
-                    <td>{{show.release_date|date:"SHORT_DATE_FORMAT" }}</td>
-                    <td><a href="/{{show.id}}">Show</a>|<a href="/{{show.id}}/edit">Edit</a>|<a href="/{{show.id}}/delete">Delete</a></td>  
+                    <td>{{movie.id}}</td>
+                    <td>{{movie.title}}</td>
+                    <td>{{movie.release_date|date:"SHORT_DATE_FORMAT" }}</td>
+                    <td><a href="/{{movie.id}}">Show</a>|<a href="/{{movie.id}}/edit">Edit</a>|<a href="/{{show.id}}/delete">Delete</a></td>  
                 </tr>
                 {% endfor%}
             </tbody>
         </table>
-
     </div>
-    
 </body>
 <footer>
 

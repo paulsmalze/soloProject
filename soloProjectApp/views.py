@@ -12,7 +12,7 @@ def login(request):
         userLogin = user[0]
         if bcrypt.checkpw(request.POST['password'].encode(), userLogin.password.encode()):
             request.session['user_id'] = userLogin.id
-            return redirect('/dashboard/')
+            return redirect('/dashboard')
         messages.error(request, 'Invalid Credentials')
         return redirect('/')
     messages.error(request, 'That email is not in our system, please register for an account')
@@ -37,7 +37,18 @@ def register(request):
     return redirect('/')
 
 def dashboard(request):
-    return render(request,'dashboard.html')
+    if 'user_id' not in request.session:
+        return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
+    context = {
+        'user': user,
+    }
+    return render(request,'dashboard.html',context)
+
+def logout(request):
+    request.session.clear()
+    return redirect('/')
+
 
 def new(request):
     return render(request,'new.html')

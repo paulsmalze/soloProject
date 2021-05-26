@@ -1,4 +1,17 @@
 body{
-    background-color: tomato;
+    background-color: tomato
 }
 
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2rem;
+}
+.messages{
+    align-items: center;
+}
+header{
+    text-align: center;
+}
