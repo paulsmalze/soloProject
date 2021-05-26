@@ -7,58 +7,58 @@
     <title>Log in and Registration</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
 </head>
 <body>
-    {% if messages %}
-        <section class='messages'>
-            {% for message in messages %}
-            <h3 {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h3>
-            {% endfor %}
-        </section>
-    {% endif %}
+    
     <header>
         <h1>Register</h1>
     </header>
+    {% if messages %}
+        <ul class='messages'>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     <div class="main">
-        <form action="/register" method="post">
+        <form action="/register" method="POST">
             {% csrf_token %}
             <div class="form-group">
                 <label for="firstName">First Name</label>
-                <input type="text" name="firstName" id="firstName" class="form-control"required>
+                <input type="text" name="firstName" id="firstName" class="form-control">
             </div>
             <div class="form-group">
                 <label for="lastName">Last Name</label>
-                <input type="text" name="lastName" id="lastName" class="form-control"required>
+                <input type="text" name="lastName" id="lastName" class="form-control">
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" class="form-control"required>
+                <input type="email" name="email" id="email" class="form-control">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" class="form-control"required>
+                <input type="password" name="password" id="password" class="form-control">
             </div>
             <div class="form-group">
                 <label for="confirm">Confirm Password</label>
-                <input type="password" name="confirm" id="confirm" class="form-control"required>
+                <input type="password" name="confirm" id="confirm" class="form-control">
             </div>
             <button class="btn btn-primary">Register</button>
         </form>
         <section>
             <h2>Login</h2>
-            <form action="/login" method="post">
+            <form action="/login" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" class="form-control"required>
+                    <input type="email" name="email" id="email" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" class="form-control"required>
+                    <input type="password" name="password" id="password" class="form-control">
                 </div>
                 
-                <button class="btn btn-primary">Register</button>
+                <button class="btn btn-primary">Login</button>
             </form>
         </section>
     </div>
