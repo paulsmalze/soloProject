@@ -36,6 +36,19 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
+class MovieManager(models.Manager):
+    def basic_validator(self, postData):
+        errors = {}
+        # postData == resquest.POST
+        if len(postData['title']) < 2:
+            errors["title"] = "Title should be at least 2 characters"
+        if len(postData['network']) < 3:
+            errors["network"] = "Network should be at least 3 characters"
+        if len(postData['description']) < 10:
+            errors["description"] = "Description should be at least 10 characters"
+        return errors
+
+
 class Movie(models.Model):
     title = models.CharField(max_length=255)
     network = models.CharField(max_length=45)
@@ -44,3 +57,4 @@ class Movie(models.Model):
     users = models.ManyToManyField(User, related_name = 'movies')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = MovieManager()

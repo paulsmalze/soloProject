@@ -42,6 +42,7 @@ def dashboard(request):
     user = User.objects.get(id=request.session['user_id'])
     context = {
         'user': user,
+        'movies': Movie.objects.all()
     }
     return render(request,'dashboard.html',context)
 
@@ -51,4 +52,55 @@ def logout(request):
 
 
 def new(request):
-    return render(request,'new.html')
+    return render(request,'newMovie.html')
+
+def create(request):
+    #run for errors before creating a show
+    errors = Movie.objects.basic_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request,value)
+        return redirect('/new')
+    #create a movie
+    Movie.objects.create(
+        title = request.POST['title'],
+        network = request.POST['network'],
+        release_date = request.POST['release_date'],
+        description = request.POST['description']
+    )
+    return redirect('/dashboard')
+
+def edit(request, movie_id):
+    one_movie = Movie.objects.get(id=movie_id)
+    context = {
+        'movie': one_movie
+    }
+    return render(request, 'editMovie.html',context)
+
+def update(request, show_id):
+    errors = Movie.objects.basic_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request,value)
+        return redirect(f'/{movie_id}/edit')
+    # updates show
+    to_update = Movie.objects.get(id=movie_id)
+    # updates each field
+    to_update.title = request.POST['title'],
+    to_update.release_date = request.POST['release_date'],
+    to_update.network = request.POST['network'],
+    to_update.description = request.POST['description'],
+    to_update.save()
+    return redirect('/dashboard')
+
+def movie(request, movie_id):
+    one_movie = Movie.objects.get(id=movie_id)
+    context = {
+        'movie': one_movie
+    }
+    return render(request, 'movie.html',context)
+
+def delete(request, movie_id):
+    to_delete = Movie.objects.get(id=movie_id)
+    to_delete.delete()
+    return redirect('/dashboard')

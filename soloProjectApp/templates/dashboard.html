@@ -12,11 +12,12 @@
     <header>
         <h1> Welcome,{{user.firstName}}!</h1>
         <h1>{{user.firstName}}'s Favorite Movies</h1>
+        <h2>{{movie.id}}</h2>
         <nav>
             <a href="/logout">Log Out</a>
+            <a href="/new">Add a Movie</a>
         </nav>
     </header>
-    
     <div class="main">
         <table>
             <thead>
@@ -28,19 +29,19 @@
                 </tr>
             </thead>
             <tbody>
-                {% for movie in movies%}
+                {% for movie in movies %}
                 <tr>
                     <td>{{movie.id}}</td>
                     <td>{{movie.title}}</td>
-                    <td>{{movie.release_date|date:"SHORT_DATE_FORMAT" }}</td>
-                    <td><a href="/{{movie.id}}">Show</a>|<a href="/{{movie.id}}/edit">Edit</a>|<a href="/{{show.id}}/delete">Delete</a></td>  
+                    <td>{{movie.release_date}}</td>
+                    <td><a href="/dashboard/{{movie.id}}">Show</a>|<a href="/dashboard/{{ movie.id }}/edit">Edit</a>|<a href="/dashboard/{{ movie.id}}/delete">Delete</a></td>  
                 </tr>
                 {% endfor%}
             </tbody>
-        </table>
+        </table> 
     </div>
 </body>
 <footer>
-
+<p>Created by Paul</p>
 </footer>
 </html>

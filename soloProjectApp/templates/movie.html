@@ -10,10 +10,18 @@
 </head>
 <body>
     <header>
-        <h1>Movie(id) Details</h1>
+        <h1>Movie{{movie.id}}</h1>
     </header>
-    <div class="main">
-
+    <div class="wrapper">
+        <h4>Title</h4>
+        <p>{{ movie.title }}</p>
+        <h4>Network</h4>
+        <p>{{ movie.network }}</p>
+        <h4>Release Date</h4>
+        <p>{{ movie.release_date }}</p>
+        <h4>Description</h4>
+        <p>{{ movie.description }}</p>    
+        <a href="{{ movie.id }}/edit">Edit</a> | <a href="dashboard/{{ movie.id }}/delete">Delete</a>
     </div>
     
 </body>

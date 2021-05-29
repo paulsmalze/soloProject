@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Edit Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Edit your Movie</h1>
+    </header>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="main">
+        <form action="/dashboard/{{movie.id}}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" class="form-control" value="{{ movie.title}}" required>
+            </div>
+            <div class="form-group">
+                <label for="network">Network</label>
+                <input type="text" name="network" id="network" class="form-control" value="{{ movie.network}}"required>
+            </div>
+            <div class="form-group">
+                <label for="release_date">Release Date</label>
+                <input type="date" name="release_date" id="release_date" class="form-control" value="{{ movie.release_date|date:'Y-m-d'}}"required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" cols="30" rows="5" class="form-control"value="{{ movie.description}}"required></textarea>
+            </div>
+            <button class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    
+</body>
+</html>

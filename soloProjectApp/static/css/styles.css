@@ -1,5 +1,5 @@
 body{
-    background-color: tomato
+    background-color: rgb(71, 197, 255)
 }
 
 .main{
@@ -9,9 +9,16 @@ body{
     align-items: center;
     padding: 2rem;
 }
-.messages{
-    align-items: center;
+.wrapper{
+    padding: 2rem;
+    text-align: center;
 }
+/* .messages{
+    align-items: center;
+} */
 header{
+    text-align: center;
+}
+footer{
     text-align: center;
 }
