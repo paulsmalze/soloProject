@@ -11,6 +11,9 @@
 <body>
     <header>
         <h1>Edit your Movie</h1>
+        <nav>
+        <a href="/new">Add a Movie</a>|<a href="/dashboard">Home</a>|<a href="/logout">Log Out</a>
+        </nav>
     </header>
     {% if messages %}
     <ul class="messages">    
@@ -36,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea name="description" id="description" cols="30" rows="5" class="form-control"value="{{ movie.description}}"required></textarea>
+                <textarea name="description" id="description" cols="40" rows="5" class="form-control"value="{{ movie.description}}"required></textarea>
             </div>
             <button class="btn btn-primary">Submit</button>
         </form>

@@ -11,6 +11,9 @@
 <body>
     <header>
         <h1>Movie{{movie.id}}</h1>
+        <nav>
+            <a href="/new">Add a Movie</a>|<a href="/dashboard">Home</a>|<a href="/logout">Log Out</a>
+        </nav>
     </header>
     <div class="wrapper">
         <h4>Title</h4>
@@ -18,11 +21,14 @@
         <h4>Network</h4>
         <p>{{ movie.network }}</p>
         <h4>Release Date</h4>
-        <p>{{ movie.release_date }}</p>
+        <p>{{ movie.release_date|date:"SHORT_DATE_FORMAT" }}</p>
         <h4>Description</h4>
         <p>{{ movie.description }}</p>    
+        <a href="/dashboard/{{movie.id}}/like">Likes</a>
+        <p>{{ movie.user_likes.count}}</p>
+
+        
         <a href="{{ movie.id }}/edit">Edit</a> | <a href="dashboard/{{ movie.id }}/delete">Delete</a>
     </div>
-    
 </body>
 </html>

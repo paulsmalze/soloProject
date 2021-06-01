@@ -57,4 +57,5 @@ class Movie(models.Model):
     users = models.ManyToManyField(User, related_name = 'movies')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    user_likes = models.ManyToManyField(User, related_name='liked_movies')
     objects = MovieManager()

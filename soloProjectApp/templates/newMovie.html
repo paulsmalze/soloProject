@@ -12,6 +12,9 @@
 <body>
     <header>
         <h1>Add a New Movie</h1>
+        <nav>
+            <a href="/dashboard">Home</a>|<a href="/logout">Log Out</a>
+        </nav>
     </header>
     {% if messages %}
 <ul class="messages">    
@@ -36,9 +39,9 @@
             </div>
             <div class= "form-group">
                 <label for="description">Description</label>
-                <textarea type="text" name="description" id="description" class="form-control" required></textarea>
+                <textarea type="text" name="description" id="description" cols="40" rows="5" class="form-control" required></textarea>
             </div>
-            <button>Create</button>
+            <button class="btn btn-primary">Create</button>
         </form>
     </div>
     

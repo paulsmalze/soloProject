@@ -11,11 +11,9 @@
 <body>
     <header>
         <h1> Welcome,{{user.firstName}}!</h1>
-        <h1>{{user.firstName}}'s Favorite Movies</h1>
-        <h2>{{movie.id}}</h2>
+        <h1>All time Favorite Movies.</h1>
         <nav>
-            <a href="/logout">Log Out</a>
-            <a href="/new">Add a Movie</a>
+            <a href="/new">Add a Movie</a>|<a href="/logout">Log Out</a>
         </nav>
     </header>
     <div class="main">
@@ -32,9 +30,9 @@
                 {% for movie in movies %}
                 <tr>
                     <td>{{movie.id}}</td>
-                    <td>{{movie.title}}</td>
-                    <td>{{movie.release_date}}</td>
-                    <td><a href="/dashboard/{{movie.id}}">Show</a>|<a href="/dashboard/{{ movie.id }}/edit">Edit</a>|<a href="/dashboard/{{ movie.id}}/delete">Delete</a></td>  
+                    <td><a href="/dashboard/{{movie.id}}">{{movie.title}}</a></td>
+                    <td>{{movie.release_date|date:"SHORT_DATE_FORMAT" }}</td>
+                    <td><a href="/dashboard/{{ movie.id }}/edit">Edit</a>|<a href="/dashboard/{{ movie.id}}/delete">Delete</a></td>  
                 </tr>
                 {% endfor%}
             </tbody>

@@ -77,7 +77,7 @@ def edit(request, movie_id):
     }
     return render(request, 'editMovie.html',context)
 
-def update(request, show_id):
+def update(request, movie_id):
     errors = Movie.objects.basic_validator(request.POST)
     if len(errors) > 0:
         for key, value in errors.items():
@@ -104,3 +104,9 @@ def delete(request, movie_id):
     to_delete = Movie.objects.get(id=movie_id)
     to_delete.delete()
     return redirect('/dashboard')
+
+def add_like(request, movie_id):
+    liked_movie= Movie.objects.get(id=movie_id)
+    user_liking = User.objects.get(id=request.session['user_id'])
+    liked_movie.user_likes.add(user_liking)
+    return redirect('/dashboard/<int:movie_id>')
