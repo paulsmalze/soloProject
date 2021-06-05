@@ -54,7 +54,7 @@ class Movie(models.Model):
     network = models.CharField(max_length=45)
     description = models.TextField(max_length=255)
     release_date = models.DateTimeField()
-    users = models.ManyToManyField(User, related_name = 'movies')
+    users = models.ManyToManyField(User, related_name ='movies')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     user_likes = models.ManyToManyField(User, related_name='liked_movies')

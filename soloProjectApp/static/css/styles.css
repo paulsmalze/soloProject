@@ -1,24 +1,45 @@
-body{
-    background-color: rgb(71, 197, 255)
-}
-
-.main{
+/* body{
+    background-color: #63c1d1fd;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2rem; 
+} */
+.container{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
     padding: 2rem;
 }
-.wrapper{
-    padding: 2rem;
-    text-align: center;
-}
-/* .messages{
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
-} */
+    padding: 2rem;
+}
+
 header{
     text-align: center;
 }
 footer{
     text-align: center;
+}
+td,th{
+    border: solid;
+}
+body {
+    padding: 25px;
+    background-color: #779ca5;
+    color: black;
+    font-size: 25px;
+
+}
+
+.dark-mode {
+    background-color: #1f1d1d;
+    color: white;
 }

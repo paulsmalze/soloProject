@@ -10,12 +10,12 @@
 </head>
 <body>
     <header>
-        <h1>Movie{{movie.id}}</h1>
+        <h1>Movie{{movie.title}}</h1>
         <nav>
-            <a href="/new">Add a Movie</a>|<a href="/dashboard">Home</a>|<a href="/logout">Log Out</a>
+            <a href="/dashboard">Home</a>|<a href="/new">Add a Movie</a>|<a href="/logout">Log Out</a>
         </nav>
     </header>
-    <div class="wrapper">
+    <div class="main">
         <h4>Title</h4>
         <p>{{ movie.title }}</p>
         <h4>Network</h4>
@@ -26,9 +26,11 @@
         <p>{{ movie.description }}</p>    
         <a href="/dashboard/{{movie.id}}/like">Likes</a>
         <p>{{ movie.user_likes.count}}</p>
-
-        
         <a href="{{ movie.id }}/edit">Edit</a> | <a href="dashboard/{{ movie.id }}/delete">Delete</a>
     </div>
 </body>
+<footer>
+    &copy; <span id="year">2021</span> 
+    <p>Created by Paul Okware</p>
+</footer>
 </html>

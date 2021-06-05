@@ -13,5 +13,6 @@ urlpatterns = [
     path('dashboard/<int:movie_id>/update',views.update),
     path('dashboard/<int:movie_id>',views.movie),
     path('dashboard/<int:movie_id>/delete',views.delete),
-    path('dashboard/<int:movie_id>/like',views.add_like)
+    path('dashboard/<int:movie_id>/like',views.add_like),
+    # path('favorite/<int:movie_id>',views.favorite)
 ]

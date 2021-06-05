@@ -83,7 +83,7 @@ def update(request, movie_id):
         for key, value in errors.items():
             messages.error(request,value)
         return redirect(f'/{movie_id}/edit')
-    # updates show
+    # updates movie
     to_update = Movie.objects.get(id=movie_id)
     # updates each field
     to_update.title = request.POST['title'],
@@ -96,7 +96,7 @@ def update(request, movie_id):
 def movie(request, movie_id):
     one_movie = Movie.objects.get(id=movie_id)
     context = {
-        'movie': one_movie
+        'movie': one_movie,
     }
     return render(request, 'movie.html',context)
 
@@ -109,4 +109,10 @@ def add_like(request, movie_id):
     liked_movie= Movie.objects.get(id=movie_id)
     user_liking = User.objects.get(id=request.session['user_id'])
     liked_movie.user_likes.add(user_liking)
-    return redirect('/dashboard/<int:movie_id>')
+    return redirect(f'/dashboard/{movie_id}')
+
+# def favorite(request,movie_id):
+#     user = User.objects.get(id=request.session["user_id"])
+#     movie = Movie.objects.get(id=movie_id)
+#     user.favorited_movie.add(movie)
+#     return redirect(f'/{movie_id}')
