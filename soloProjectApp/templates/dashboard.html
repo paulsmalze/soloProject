@@ -7,15 +7,17 @@
     <title>Dashboard</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/scripts.js' %}"></script>
 </head>
 <body>
     <header>
         <h1> Welcome,{{user.firstName}}!</h1>
         <h1>All time Favorite Movies.</h1>
         <nav>
-            <a href="/new">Add a Movie</a>|<a href="/logout">Log Out</a>
-            <button onclick="myFunction()">Toggle dark mode</button>
+            <a href="/new">Add a Movie</a>|
+            <a href="/logout">Log Out</a>
         </nav>
+        <button type="button" class="btn btn-dark" onclick="myFunction()">Toggle dark mode</button>
     </header>
     <div class="main">
         <table>
@@ -33,18 +35,15 @@
                     <td>{{movie.id}}</td>
                     <td><a href="/dashboard/{{movie.id}}">{{movie.title}}</a></td>
                     <td>{{movie.release_date|date:"SHORT_DATE_FORMAT" }}</td>
-                    <td><a href="/dashboard/{{ movie.id }}/edit">Edit</a>|<a href="/dashboard/{{ movie.id}}/delete" role='button' class="btn btn-danger">Delete</a></td>  
+                    <td><a href="/dashboard/{{ movie.id }}/edit">Edit</a>
+                        <!-- |<a href="/dashboard/{{ movie.id}}/delete" role='button' class="btn btn-danger">Delete</a> -->
+                    </td>   
                 </tr>
                 {% endfor%}
             </tbody>
         </table> 
     </div>
-    <script>
-    function myFunction() {
-    var element = document.body;
-    element.classList.toggle("dark-mode");
-    }
-    </script>
+    
 </body>
 <footer>
     &copy; <span id="year">2021</span> 

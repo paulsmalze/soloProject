@@ -52,6 +52,8 @@ def logout(request):
 
 
 def new(request):
+    if 'user_id' not in request.session:
+        return redirect('/')
     return render(request,'newMovie.html')
 
 def create(request):
@@ -82,16 +84,17 @@ def update(request, movie_id):
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request,value)
-        return redirect(f'/{movie_id}/edit')
+        return redirect(f'/dashboard/{movie_id}/edit')
     # updates movie
     to_update = Movie.objects.get(id=movie_id)
     # updates each field
-    to_update.title = request.POST['title'],
-    to_update.release_date = request.POST['release_date'],
-    to_update.network = request.POST['network'],
-    to_update.description = request.POST['description'],
+    to_update.title = request.POST['title']
+    to_update.release_date = request.POST['release_date']
+    to_update.network = request.POST['network']
+    to_update.description = request.POST['description']
+    print("to update", to_update)
     to_update.save()
-    return redirect('/dashboard')
+    return redirect(f'/dashboard/{movie_id}')
 
 def movie(request, movie_id):
     one_movie = Movie.objects.get(id=movie_id)
@@ -110,9 +113,3 @@ def add_like(request, movie_id):
     user_liking = User.objects.get(id=request.session['user_id'])
     liked_movie.user_likes.add(user_liking)
     return redirect(f'/dashboard/{movie_id}')
-
-# def favorite(request,movie_id):
-#     user = User.objects.get(id=request.session["user_id"])
-#     movie = Movie.objects.get(id=movie_id)
-#     user.favorited_movie.add(movie)
-#     return redirect(f'/{movie_id}')

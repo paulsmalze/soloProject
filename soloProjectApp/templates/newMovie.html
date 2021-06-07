@@ -7,7 +7,7 @@
     <title>New Movie</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
-
+    <script src="{% static 'js/scripts.js' %}"></script>
 </head>
 <body>
     <header>
@@ -15,11 +15,12 @@
         <nav>
             <a href="/dashboard">Home</a>|<a href="/logout">Log Out</a>
         </nav>
+        <button type="button" class="btn btn-dark" onclick="myFunction()">Toggle dark mode</button>
     </header>
     {% if messages %}
         <ul class="messages">    
             {% for message in messages %}    
-                <li>{{ message }}</li>    
+            <li>{{ message }}</li>    
             {% endfor %}
         </ul>
     {% endif %}
