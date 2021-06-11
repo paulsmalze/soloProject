@@ -17,14 +17,19 @@
             <a href="/new">Add a Movie</a>|
             <a href="/logout">Log Out</a>
         </nav>
-        <button type="button" class="btn btn-dark" onclick="myFunction()">Toggle dark mode</button>
+        <button type="button" class="btn btn-dark" onclick="myFunction()">Toggle dark/light mode</button>
     </header>
     <div class="main">
+        {% if request.session.user_id %}
+        <p class='success'>You have successfully registered/logged in</p>
+        {% endif %}
+        <img src="{% static 'img/icon.jpeg' %}" alt="camera icon">
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
+                    <th>Genre</th>
                     <th>Release Date</th>
                     <th>Actions</th>
                 </tr>
@@ -34,9 +39,9 @@
                 <tr>
                     <td>{{movie.id}}</td>
                     <td><a href="/dashboard/{{movie.id}}">{{movie.title}}</a></td>
+                    <td>{{movie.genre}}</td>
                     <td>{{movie.release_date|date:"SHORT_DATE_FORMAT" }}</td>
                     <td><a href="/dashboard/{{ movie.id }}/edit">Edit</a>
-                        <!-- |<a href="/dashboard/{{ movie.id}}/delete" role='button' class="btn btn-danger">Delete</a> -->
                     </td>   
                 </tr>
                 {% endfor%}

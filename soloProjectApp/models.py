@@ -46,6 +46,8 @@ class MovieManager(models.Manager):
             errors["network"] = "Network should be at least 3 characters"
         if len(postData['description']) < 10:
             errors["description"] = "Description should be at least 10 characters"
+        if len(postData['genre']) < 3:
+            errors["genre"] = "Genre should be at least 3 characters"
         return errors
 
 
@@ -53,9 +55,10 @@ class Movie(models.Model):
     title = models.CharField(max_length=255)
     network = models.CharField(max_length=45)
     description = models.TextField(max_length=255)
+    genre = models.CharField(max_length=45)
     release_date = models.DateTimeField()
-    users = models.ManyToManyField(User, related_name ='movies')
+    uploaded_by = models.ForeignKey(User,related_name ='movies_uploaded',on_delete=models.CASCADE)
+    user_likes = models.ManyToManyField(User, related_name='liked_movies')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    user_likes = models.ManyToManyField(User, related_name='liked_movies')
     objects = MovieManager()

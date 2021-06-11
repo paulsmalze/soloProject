@@ -15,7 +15,7 @@
         <nav>
             <a href="/dashboard">Home</a>|<a href="/logout">Log Out</a>
         </nav>
-        <button type="button" class="btn btn-dark" onclick="myFunction()">Toggle dark mode</button>
+        <button type="button" class="btn btn-dark" onclick="myFunction()">Toggle dark/light mode</button>
     </header>
     {% if messages %}
         <ul class="messages">    
@@ -28,18 +28,22 @@
         <form action="/create" method="POST">
             {% csrf_token %}
             <div class= "form-group">
-                <label for="title">Title</label>
+                <label for="title">Title:</label>
                 <input type="text" name="title" id="title" class="form-control" required>
             </div>
             <div class= "form-group">
-                <label for="network">Network</label>
+                <label for="genre">Genre:</label>
+                <input type="text" name="genre" id="genre" class="form-control" required>
+            </div>
+            <div class= "form-group">
+                <label for="network">Network:</label>
                 <input type="text" name="network" id="network" class="form-control" required>
             <div class= "form-group">
-                <label for="release_date">Release Date</label>
+                <label for="release_date">Release Date:</label>
                 <input type="date" name="release_date" id="release_date" class="form-control" required>
             </div>
             <div class= "form-group">
-                <label for="description">Description</label>
+                <label for="description">Description:</label>
                 <textarea type="text" name="description" id="description" cols="50" rows="5" class="form-control" required></textarea>
             </div>
             <button class="btn btn-primary">Create</button>

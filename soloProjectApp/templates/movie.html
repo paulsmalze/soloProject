@@ -15,20 +15,24 @@
         <nav>
             <a href="/dashboard">Home</a>|<a href="/new">Add a Movie</a>|<a href="/logout">Log Out</a>|<a href="{{ movie.id }}/edit">Edit</a>
         </nav>
-        <button type="button" class="btn btn-dark" onclick="myFunction()">Toggle dark mode</button>
+        <button type="button" class="btn btn-dark" onclick="myFunction()">Toggle dark/light mode</button>
     </header>
     <div class="main">
-        <h4>Title</h4>
+        <h4>Title.</h4>
         <p>{{ movie.title }}</p>
-        <h4>Network</h4>
+        <h4>Network.</h4>
         <p>{{ movie.network }}</p>
-        <h4>Release Date</h4>
+        <h4>Genre</h4>
+        <p>{{movie.genre}}</p>
+        <h4>Release Date.</h4>
         <p>{{ movie.release_date|date:"SHORT_DATE_FORMAT" }}</p>
-        <h4>Description</h4>
-        <p>{{ movie.description }}</p>    
+        <h4>Description.</h4>
+        <p>{{ movie.description }}</p>
+        <h4>Uploaded by:</h4>
+        <p>{{movie.uploaded_by.firstName}} {{movie.uploaded_by.lastName}}</p>    
         <a href="/dashboard/{{movie.id}}/like">Likes</a>
         <p>{{ movie.user_likes.count}}</p>
-        <button><a href="dashboard/{{ movie.id }}/delete"role='button' class="btn btn-danger">Delete</a></button>
+        <button><a href="/dashboard/{{ movie.id }}/delete"role='button' class="btn btn-danger">Delete</a></button>
     </div>
 </body>
 <footer>

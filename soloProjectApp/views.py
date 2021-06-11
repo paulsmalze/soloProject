@@ -34,7 +34,7 @@ def register(request):
         password = hashedPw
     )
     request.session['user_id'] = newUser.id
-    return redirect('/')
+    return redirect('/dashboard')
 
 def dashboard(request):
     if 'user_id' not in request.session:
@@ -64,11 +64,14 @@ def create(request):
             messages.error(request,value)
         return redirect('/new')
     #create a movie
+    user = User.objects.get(id=request.session['user_id'])
     Movie.objects.create(
         title = request.POST['title'],
         network = request.POST['network'],
+        genre = request.POST['genre'],
         release_date = request.POST['release_date'],
-        description = request.POST['description']
+        description = request.POST['description'],
+        uploaded_by = user
     )
     return redirect('/dashboard')
 
@@ -91,8 +94,8 @@ def update(request, movie_id):
     to_update.title = request.POST['title']
     to_update.release_date = request.POST['release_date']
     to_update.network = request.POST['network']
+    to_update.genre = request.POST['genre']
     to_update.description = request.POST['description']
-    print("to update", to_update)
     to_update.save()
     return redirect(f'/dashboard/{movie_id}')
 
@@ -104,7 +107,7 @@ def movie(request, movie_id):
     return render(request, 'movie.html',context)
 
 def delete(request, movie_id):
-    to_delete = Movie.objects.get(id=movie_id)
+    to_delete = Movie.objects.filter(id=movie_id)
     to_delete.delete()
     return redirect('/dashboard')
 
@@ -113,3 +116,5 @@ def add_like(request, movie_id):
     user_liking = User.objects.get(id=request.session['user_id'])
     liked_movie.user_likes.add(user_liking)
     return redirect(f'/dashboard/{movie_id}')
+
+
