@@ -56,3 +56,6 @@ label{
 .success{
     color: #0ca30c;
 }
+input{
+    border-radius: 50%;
+}

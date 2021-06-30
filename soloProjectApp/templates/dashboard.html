@@ -12,7 +12,6 @@
 <body>
     <header>
         <h1> Welcome,{{user.firstName}}!</h1>
-        <h1>All time Favorite Movies.</h1>
         <nav>
             <a href="/new">Add a Movie</a>|
             <a href="/logout">Log Out</a>
@@ -24,6 +23,7 @@
         <p class='success'>You have successfully registered/logged in</p>
         {% endif %}
         <img src="{% static 'img/icon.jpeg' %}" alt="camera icon">
+        <h1>All time Favorite Movies.</h1>
         <table>
             <thead>
                 <tr>
