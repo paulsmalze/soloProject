@@ -7,10 +7,15 @@
     <title>Log in and Registration</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- <script src="{% static 'js/scripts.js' %}"></script> -->
 </head>
-<body>
+<body id="gradient">
     <header>
         <h2>MovieBook</h2>
+        <input class="color1" type="color" name="color1" value="#ff0000">
+        <input class="color2" type="color" name="color2" value="#8f00ff">
+        <h4> Select your background colors</h4>
+        <h5></h5>
     </header>
     {% if messages %}
         <section class='messages'>
@@ -21,7 +26,7 @@
     {% endif %}
     <div class="container">
         <section>
-            <h2>Register</h2>
+            <h2>Register:</h2>
             <form action="/register" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
@@ -48,7 +53,7 @@
             </form>
         </section>
         <section>
-            <h2>Login</h2>
+            <h2>Login:</h2>
             <form action="/login" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
@@ -64,7 +69,7 @@
             </form>
         </section>
     </div>
-    
+    <script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
 </body>
 <footer></footer>
 </html>
