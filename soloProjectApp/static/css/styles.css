@@ -1,11 +1,11 @@
 body {
     margin: 0;
     padding: 25px;
-    /* background-color: #9DDBAD; */
+    background-color: #9DDBAD;
     background-image: url("https://www.transparenttextures.com/patterns/purty-wood.png");
     color: #040403;
     font-size: 20px;
-    background: linear-gradient(to right, red, violet);
+    /* background: linear-gradient(to right, red, violet); */
 
 }
 body.dark-mode {

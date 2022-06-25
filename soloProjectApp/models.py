@@ -36,6 +36,9 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
+    def __str__ (self):
+        return self.firstName
+
 class MovieManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
@@ -62,3 +65,6 @@ class Movie(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = MovieManager()
+
+    def __str__ (self):
+        return self.title
